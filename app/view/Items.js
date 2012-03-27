@@ -90,6 +90,12 @@ Ext.define("TN.view.Items", {
                         value: 'humus'
                     }
                 ]
+            },
+            {
+                xtype: 'button',
+                text: 'Submit!',
+                ui: 'confirm',
+                id: 'btnSubmit'
             }
         ]
     }

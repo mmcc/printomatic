@@ -1,6 +1,8 @@
 Ext.define("TN.view.Items", {
     extend: 'Ext.form.FormPanel',
     requires: ['Ext.TitleBar'],
+    alias: 'widget.foodOrder',
+    id: 'items',
     
     config: {
         layout: 'vbox',

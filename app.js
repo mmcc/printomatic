@@ -10,9 +10,8 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-    models: ['Order', 'Item'],
     controllers: ['Main'],
-    views: ['Main', 'Items'],
+    views: ['Main', 'User', 'Items'],
 
     icon: {
         57: 'resources/icons/Icon.png',

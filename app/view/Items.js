@@ -1,11 +1,14 @@
 Ext.define("TN.view.Items", {
     extend: 'Ext.form.FormPanel',
     requires: ['Ext.TitleBar'],
+    alias: 'widget.foodOrder',
+    id: 'items',
     
     config: {
         layout: 'vbox',
         fullscreen: true,
         scrollable: true,
+        id: 'orderForm',
         
         items: [
             {
@@ -16,6 +19,9 @@ Ext.define("TN.view.Items", {
             {
                 xtype: 'fieldset',
                 title: 'Drinks',
+                defaults: {
+                    labelWidth: '80%'
+                },
                 items: [
                     {
                         xtype: 'checkboxfield',
@@ -46,6 +52,9 @@ Ext.define("TN.view.Items", {
             {
                 xtype: 'fieldset',
                 title: 'Food',
+                defaults: {
+                    labelWidth: '80%'
+                },
                 items: [
                     {
                         xtype: 'checkboxfield',

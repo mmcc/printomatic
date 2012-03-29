@@ -10,7 +10,6 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-    models: ['Order', 'Item'],
     controllers: ['Main'],
     views: ['Main', 'Items'],
 

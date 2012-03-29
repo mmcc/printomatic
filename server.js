@@ -9,36 +9,30 @@ var db = nano.use(db_name);
 var app = express.createServer();
 
 app.configure(function() {
-	app.use(express.logger());
+	//app.use(express.logger());
   app.use(express.methodOverride());
   app.use(express.bodyParser());
   app.use(app.router);        // <-- router here
+  app.use(express.static(__dirname));
 
-    // disable layout
-  app.set("view options", {layout: false});
-
-});
-
-app.get('/', function(req, res){
-  res.sendfile(__dirname + '/index.html');
 });
 
 app.post('/signin', function(req,res) {
-  res.send("Hello " + req.body.user.name);
-  db.insert({name: req.body.user.name, year: req.body.user.year}, req.body.user.email, function (error2, body2, headers2) {
+  res.json({success: true}, 200);
+  console.log("/signin");
+  db.insert({name: req.body.name, email: req.body.email, year: req.body.year}, req.body.id, function (error2, body2, headers2) {
     if(error2) { return res.send(error2.message, error2['status-code']); }
     res.send("success: true}", 200);
-    console.log("name: " + req.body.user.name);
-		console.log("email: " + req.body.user.email);
-		console.log("year: " + req.body.user.year);
+    console.log("id: "+ req.body.id);
+    console.log("name: " + req.body.name);
+		console.log("email: " + req.body.email);
+		console.log("year: " + req.body.year);
   });
 });
 
 app.post('/print', function(req,res) {
-  console.log("name: " + req.body.user.name);
-	console.log("email: " + req.body.user.email);
-	console.log("year: " + req.body.user.year);
-	res.send("{success:true}");
+  console.log(req.body);
+	res.json({success: true}, 200);
 });
 
 app.listen(8080);

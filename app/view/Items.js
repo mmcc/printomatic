@@ -6,6 +6,7 @@ Ext.define("TN.view.Items", {
         layout: 'vbox',
         fullscreen: true,
         scrollable: true,
+        id: 'orderForm',
         
         items: [
             {
@@ -16,6 +17,9 @@ Ext.define("TN.view.Items", {
             {
                 xtype: 'fieldset',
                 title: 'Drinks',
+                defaults: {
+                    labelWidth: '80%'
+                },
                 items: [
                     {
                         xtype: 'checkboxfield',
@@ -46,6 +50,9 @@ Ext.define("TN.view.Items", {
             {
                 xtype: 'fieldset',
                 title: 'Food',
+                defaults: {
+                    labelWidth: '80%'
+                },
                 items: [
                     {
                         xtype: 'checkboxfield',

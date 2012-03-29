@@ -31,6 +31,9 @@ Ext.define("TN.view.Main", {
                 items: [
                     {
                         xtype: 'fieldset',
+                        defaults: {
+                            labelWidth: '40%'
+                        },
                         items: [
                             {
                                 xtype: 'textfield',
@@ -44,6 +47,7 @@ Ext.define("TN.view.Main", {
                             },
                             {
                                 xtype: 'selectfield',
+                                name: 'year',
                                 label: 'Current Year',
                                 options: [
                                     {text: 'Freshman',  value: 'freshman'},

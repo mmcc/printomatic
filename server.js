@@ -1,9 +1,11 @@
 var express = require('express');
+var jade = require('jade');
 var nano = require('nano')('http://localhost:5984');
 var exec = require('child_process').exec;
 
 var db_name = "people";
 var db = nano.use(db_name);
+var params = {include_docs: true, limit: 100, descending: true};
 
 var app = express.createServer();
 
@@ -13,6 +15,9 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(app.router);        // <-- router here
   app.use(express.static(__dirname));
+  app.set('view options', {
+    layout: false
+  });
 
 });
 
@@ -21,7 +26,6 @@ app.post('/signin', function(req,res) {
   console.log("Check-in received!");
 
   // Let's clean up this food a little bit.
-  // This REALLY needs to be redone.
   var foodItems = "\n";
   var p = req.body;
   for (var key in p) {
@@ -52,9 +56,12 @@ app.post('/signin', function(req,res) {
   });
 });
 
-app.post('/print', function(req,res) {
-  console.log(req.body);
-	res.json({success: true}, 200);
+app.get('/attendees', function(req,res) {
+  db.list(params, function(error,body,headers) {
+    console.log("Exporting attendees...");
+    console.log(body.rows);
+    res.render('attendees.jade', {data: body.rows});
+  });
 });
 
 app.listen(8080);

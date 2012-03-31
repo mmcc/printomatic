@@ -11,7 +11,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
     controllers: ['Main'],
-    views: ['Main', 'User', 'Items'],
+    views: ['Main'],
 
     icon: {
         57: 'resources/icons/Icon.png',

@@ -2,27 +2,13 @@ Ext.define("TN.controller.Main", {
     extend: "Ext.app.Controller",
     config: {
         refs: {
-            btnNext: "#btnNext",
             btnSubmit: "#btnSubmit",
             mainForm: {
                 selector: "#mainForm",
                 xtype: "mainForm"
-            },
-            infoForm: {
-                selector: "#basicInfo",
-                xtype: "checkIn",
-                autoCreate: true
-            },
-            orderForm: {
-                selector: "#orderForm",
-                xtype: "orderForm",
-                autoCreate: true
             }
         },
         control: {
-            btnNext: {
-                tap: "onNext"
-            },
             btnSubmit: {
                 tap: "onSubmit"
             }
@@ -35,7 +21,7 @@ Ext.define("TN.controller.Main", {
         var form = this.getInfoForm()
         var values = form.getValues();
 
-        // Let's check to make sure they filled in at least their name.
+        // Let's check to make sure they filled in their name and email.
         if (!values.name || !values.email) {
             Ext.Msg.alert("WhyWait...", "We at least need a name!");
             return;

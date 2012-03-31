@@ -1,0 +1,14 @@
+!!! 5
+html(lang="en")
+	head
+		title Attendees
+	body
+		h2 Attendees
+		div
+			- for (var k in data)
+				each val, key in data[k]
+					if (key == 'doc')
+						ul
+							each val2, key2 in val
+								if (key2 != 'rev') && (key2 != '_id') && (key2 != '_rev')
+									li #{key2}: #{val2}

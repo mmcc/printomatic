@@ -22,16 +22,18 @@ app.configure(function() {
 });
 
 app.post('/signin', function(req,res) {
-  res.json({success: true}, 200);
   console.log("Check-in received!");
 
   // Let's clean up this food a little bit.
   var foodItems = "\n";
   var p = req.body;
+  console.log("Ordered:")
+  var i = 1;
   for (var key in p) {
     if ((p[key] != 'false') && (key != 'name') && (key != 'email') && (key != 'year')) {
       foodItems = foodItems + p[key] + "\n";
-      console.log(key + " -> " + p[key]);
+      console.log(i + ": " + p[key]);
+      i = i + 1;
     }
   }
 
@@ -54,12 +56,13 @@ app.post('/signin', function(req,res) {
     }
     console.log('Order printed!\n');
   });
+
+  res.json({success: true}, 200);
 });
 
 app.get('/attendees', function(req,res) {
   db.list(params, function(error,body,headers) {
     console.log("Exporting attendees...");
-    console.log(body.rows);
     res.render('attendees.jade', {data: body.rows});
   });
 });
